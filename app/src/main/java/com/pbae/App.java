@@ -17,9 +17,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("choixCarte"), 800, 600);
-        stage.setScene(scene);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("choixCarte.fxml"));
+        Parent root = loader.load();
         
+        PrimaryController controller = loader.getController();
+        controller.setStage(stage);
+
+        Scene scene = new Scene(root, 800, 600); // Taille de la fenêtre
+        stage.setTitle("FileChooser Example");
+        stage.setScene(scene);
         stage.show();
     }
 
